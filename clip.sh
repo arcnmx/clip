@@ -190,6 +190,7 @@ if { [[ $PREFERRED = osc ]] && lazytty; } || { [[ -z $PREFERRED ]] && isatty; };
 		# TODO: forcibly take over the tty somehow..?
 		# There's $SSH_TTY but that's unhelpful for tmux...
 		# For tmux you can $(tmux list-panes -F "#{pane_active} #{pane_tty}") to check if current pane is active, and if so, use its tty... but ew..? and can we even steal stdin from tmux?
+		# what you actually want might be $(tmux list-clients -F "#{client_tty}") hmmm....
 		if read -t 2 -r -d "$(printf '\a')" LINE; then
 			# TODO: can we get more than one response? what if multiple terminals are listening!
 			if [[ $LINE != "$(printf '\e]52;%s')"*\;* ]]; then
