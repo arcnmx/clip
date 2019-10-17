@@ -1,9 +1,9 @@
 { stdenvNoCC
 , makeWrapper
 , coreutils
-, enableX11 ? true
+, enableX11 ? stdenvNoCC.isLinux
 , xsel ? null
-, enableWayland ? true
+, enableWayland ? stdenvNoCC.isLinux
 , wl-clipboard ? null
 }: with stdenvNoCC.lib;
 
