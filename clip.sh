@@ -180,7 +180,7 @@ if { [[ $PREFERRED = osc ]] && lazytty; } || { [[ -z $PREFERRED ]] && isatty; };
 	COMMAND=$(printf '\e]52;%s;%s\a' "$CLIPBOARD" "$DATA")
 	if [[ -n ${TMUX-} ]]; then
 		escape_tmux "$COMMAND"
-	elif [[ ${TERM-} = screen ]]; then
+	elif [[ ${TERM-} = screen* ]]; then
 		escape_screen "$COMMAND"
 	else
 		printf %s "$COMMAND"
